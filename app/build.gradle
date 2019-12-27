@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    // Using supported Java 8 language features.
+    // Configure only for each module that uses Java 8 language features
+    // (either in its source code or through dependencies).
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -21,9 +29,26 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Android X Navigation Components
+    implementation "androidx.navigation:navigation-fragment:2.1.0" // use -ktx for Kotlin
+    implementation "androidx.navigation:navigation-ui:2.1.0" // use -ktx for Kotlin
+
+    // Timber (logging)
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Butter Knife (view binding)
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+
+    // EventBus (publish/subscribe event bus)
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    // ViewModel and LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
 }
